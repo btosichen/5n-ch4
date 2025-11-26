@@ -35,7 +35,7 @@
         /* 固定頭部與姓名區 */
         header {
             background-color: var(--primary-color);
-            padding: 10px 15px;
+            padding: 15px 15px;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -45,39 +45,45 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 10px; /* 增加元件間距 */
         }
 
         .header-top {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* 標題置中 */
             width: 100%;
             max-width: 800px;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .app-title {
             color: white;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: bold;
             text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+            text-align: center;
         }
 
+        /* 調整後的重點筆記按鈕樣式 */
         .btn-study {
             background: var(--accent-color);
             color: #5d4037;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 20px;
+            border: 2px solid #fff; /* 增加白邊更顯眼 */
+            padding: 10px 0;
+            border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 0 #FBC02D;
+            box-shadow: 0 4px 0 #FBC02D, 0 5px 10px rgba(0,0,0,0.1);
             transition: transform 0.1s;
-            font-size: 0.9rem;
+            font-size: 1.1rem; /* 字體加大 */
             text-decoration: none;
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            max-width: 600px; /* 跟輸入框一樣寬 */
         }
 
         .btn-study:active {
@@ -103,6 +109,7 @@
             font-weight: bold;
             color: var(--text-color);
             white-space: nowrap;
+            padding-left: 10px;
         }
 
         .student-info input {
@@ -518,12 +525,16 @@
 <header>
     <div class="header-top">
         <div class="app-title">🔥 燃燒與生鏽大挑戰 🔩</div>
-        <button class="btn-study" onclick="openStudyModal()">📖 重點筆記</button>
     </div>
     <div class="student-info">
         <label for="studentName">📛 姓名：</label>
         <input type="text" id="studentName" placeholder="輸入名字" required>
     </div>
+    <!-- 重點筆記按鈕移至此處 -->
+    <button class="btn-study" onclick="openStudyModal()">
+        <span>📖</span>
+        <span>重點筆記複習</span>
+    </button>
 </header>
 
 <div class="container">
