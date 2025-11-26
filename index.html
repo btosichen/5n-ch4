@@ -29,7 +29,7 @@
             color: var(--text-color);
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 80px; /* Space for footer/buttons */
+            padding-bottom: 80px;
         }
 
         /* 固定頭部與姓名區 */
@@ -42,15 +42,47 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            align-items: center;
+            margin-bottom: 10px;
         }
 
         .app-title {
-            text-align: center;
             color: white;
             font-size: 1.4rem;
             font-weight: bold;
             text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
+        }
+
+        .btn-study {
+            background: var(--accent-color);
+            color: #5d4037;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #FBC02D;
+            transition: transform 0.1s;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-study:active {
+            transform: translateY(4px);
+            box-shadow: none;
         }
 
         .student-info {
@@ -60,8 +92,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
             max-width: 600px;
-            margin: 0 auto;
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
         }
 
@@ -70,6 +102,7 @@
             margin-right: 10px;
             font-weight: bold;
             color: var(--text-color);
+            white-space: nowrap;
         }
 
         .student-info input {
@@ -77,7 +110,7 @@
             border-radius: 30px;
             padding: 8px 15px;
             font-size: 1.1rem;
-            width: 180px;
+            width: 100%;
             outline: none;
             transition: border-color 0.3s;
         }
@@ -98,7 +131,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             margin: 20px 0;
         }
 
@@ -106,12 +139,12 @@
             background: white;
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.2s;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .filter-btn.active {
@@ -138,7 +171,7 @@
             padding: 20px;
             margin-bottom: 25px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            border: 3px solid transparent; /* 預留給答對/答錯的框線 */
+            border: 3px solid transparent;
             transition: transform 0.2s, border-color 0.3s, background-color 0.3s;
         }
 
@@ -146,7 +179,6 @@
             transform: translateY(-2px);
         }
 
-        /* 批改樣式 */
         .question-card.correct-card {
             border-color: #2ecc71;
             background-color: #f0fff4;
@@ -163,6 +195,14 @@
             margin-bottom: 15px;
             border-bottom: 2px solid #f0f0f0;
             padding-bottom: 10px;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .q-badges {
+            display: flex;
+            gap: 5px;
+            align-items: center;
         }
 
         .q-badge {
@@ -170,32 +210,33 @@
             color: #5d4037;
             padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
         }
 
         .q-category-tag {
             font-size: 0.8rem;
             color: #888;
-            margin-left: 10px;
-            align-self: center;
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 10px;
         }
 
         .q-id {
             color: #999;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
         .q-text {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             line-height: 1.6;
             margin-bottom: 15px;
             font-weight: 600;
         }
 
-        /* 提示文字樣式 */
         .q-hint {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #795548;
             background-color: #FFF8E1;
             padding: 10px;
@@ -204,19 +245,18 @@
             border-left: 4px solid #FFC107;
         }
 
-        /* 選項按鈕 */
         .options-grid {
             display: grid;
-            gap: 12px;
+            gap: 10px;
         }
 
         .option-btn {
             background: #f8f9fa;
             border: 2px solid #e9ecef;
             border-radius: 12px;
-            padding: 16px;
+            padding: 14px;
             text-align: left;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             cursor: pointer;
             transition: all 0.2s ease;
             position: relative;
@@ -228,7 +268,6 @@
             transform: scale(0.98);
         }
 
-        /* 選中狀態 (作答時) */
         .option-btn.selected {
             background: #E3F2FD;
             border-color: #2196F3;
@@ -237,7 +276,6 @@
             box-shadow: 0 4px 10px rgba(33, 150, 243, 0.2);
         }
 
-        /* 批改後的狀態樣式 */
         .option-btn.user-correct {
             background: #d4edda;
             border-color: #28a745;
@@ -277,10 +315,9 @@
             transform: translateY(-50%);
             color: #28a745;
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
-        /* 解析區塊 */
         .explanation-box {
             margin-top: 15px;
             padding: 15px;
@@ -288,8 +325,8 @@
             border: 1px solid #FFEEBA;
             border-radius: 12px;
             color: #856404;
-            font-size: 1rem;
-            display: none; /* 預設隱藏 */
+            font-size: 0.95rem;
+            display: none;
             animation: fadeIn 0.5s;
         }
         
@@ -304,14 +341,13 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* 文字輸入題 */
         .literacy-input {
             width: 100%;
             height: 100px;
             border: 2px solid #ddd;
             border-radius: 15px;
             padding: 15px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-family: var(--font-main);
             resize: vertical;
             outline: none;
@@ -323,7 +359,6 @@
             background: white;
         }
 
-        /* 底部按鈕區 */
         .footer-actions {
             max-width: 800px;
             margin: 30px auto 60px;
@@ -336,7 +371,7 @@
             color: white;
             border: none;
             padding: 18px 40px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             border-radius: 50px;
             cursor: pointer;
             width: 100%;
@@ -357,8 +392,8 @@
             cursor: not-allowed;
         }
 
-        /* 成績彈窗 */
-        .result-modal {
+        /* 模態視窗共用樣式 */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -373,26 +408,40 @@
             backdrop-filter: blur(5px);
         }
 
-        .result-card {
+        .modal-card {
             background: white;
             width: 100%;
-            max-width: 500px;
+            max-width: 600px;
             border-radius: 25px;
             padding: 30px;
             text-align: center;
             position: relative;
-            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             max-height: 90vh;
             overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes popIn {
-            0% { transform: scale(0.5); opacity: 0; }
+            0% { transform: scale(0.8); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
+        /* 重點筆記樣式 */
+        .study-content {
+            text-align: left;
+            line-height: 1.8;
+            color: #444;
+        }
+        .study-content h2 { color: var(--secondary-color); text-align: center; border-bottom: 2px dashed #eee; padding-bottom: 10px; }
+        .study-content h3 { color: var(--primary-color); background: #E0F7FA; padding: 8px 12px; border-radius: 10px; margin-top: 25px; }
+        .study-content h4 { color: #555; border-left: 5px solid var(--accent-color); padding-left: 10px; margin-top: 20px; }
+        .study-content ul { padding-left: 20px; }
+        .study-content li { margin-bottom: 8px; }
+        .study-content strong { color: #D81B60; background: #FFF9C4; padding: 0 4px; }
+
         .score-display {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--secondary-color);
             margin: 10px 0;
@@ -405,7 +454,7 @@
             padding: 15px;
             border-radius: 15px;
             margin: 20px 0;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .btn-group {
@@ -430,7 +479,6 @@
         .btn-review { background: #FFB74D; color: white; }
         .btn-close { background: #95a5a6; color: white; }
 
-        /* 歷史紀錄表格 */
         .history-section {
             margin-top: 50px;
             background: white;
@@ -443,11 +491,12 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
+            font-size: 0.9rem;
         }
 
         th, td {
             text-align: left;
-            padding: 12px;
+            padding: 10px;
             border-bottom: 1px solid #eee;
         }
 
@@ -456,7 +505,6 @@
             color: var(--text-color);
         }
         
-        /* 錯誤題號顯示 */
         .wrong-list {
             color: #e74c3c;
             font-weight: bold;
@@ -468,24 +516,26 @@
 <body>
 
 <header>
-    <div class="app-title">🔥 燃燒與生鏽大挑戰 🔩</div>
+    <div class="header-top">
+        <div class="app-title">🔥 燃燒與生鏽大挑戰 🔩</div>
+        <button class="btn-study" onclick="openStudyModal()">📖 重點筆記</button>
+    </div>
     <div class="student-info">
         <label for="studentName">📛 姓名：</label>
-        <input type="text" id="studentName" placeholder="請輸入名字" required>
+        <input type="text" id="studentName" placeholder="輸入名字" required>
     </div>
 </header>
 
 <div class="container">
     <div class="category-filter">
-        <button class="filter-btn active" onclick="switchCategory('all')">全單元複習 (50題)</button>
+        <button class="filter-btn active" onclick="switchCategory('all')">全單元 (100題)</button>
         <button class="filter-btn" onclick="switchCategory('act1')">活動一：燃燒與氣體</button>
-        <button class="filter-btn" onclick="switchCategory('act2')">活動二：鐵生鏽探討</button>
-        <button class="filter-btn" onclick="switchCategory('act3')">活動三：防鏽與應用</button>
+        <button class="filter-btn" onclick="switchCategory('act2')">活動二：燃燒與滅火</button>
+        <button class="filter-btn" onclick="switchCategory('act3')">活動三：生鏽與防鏽</button>
     </div>
 
-    <div id="quiz-area">
-        <!-- 題目將由 JS 動態生成 -->
-    </div>
+    <div id="quiz-area"></div>
+    <div id="literacy-area"></div>
 
     <div class="footer-actions">
         <button id="submitBtn" class="submit-btn" onclick="submitQuiz()">🚀 送出測驗</button>
@@ -497,21 +547,75 @@
             <thead>
                 <tr>
                     <th>姓名</th>
-                    <th>單元</th>
+                    <th>範圍</th>
                     <th>分數</th>
                     <th>時間</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- 歷史紀錄 -->
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 </div>
 
+<!-- 重點筆記彈窗 -->
+<div class="modal-overlay" id="studyModal">
+    <div class="modal-card">
+        <div class="study-content">
+            <h2>📚 單元重點複習：燃燒與生鏽</h2>
+            <p>本單元的核心是了解<strong>氧化作用</strong>，包含劇烈的氧化反應（燃燒）和緩慢的氧化反應（生鏽）。</p>
+            
+            <h3>活動一：空氣與燃燒有什麼關係</h3>
+            <h4>1-1 燃燒需要空氣</h4>
+            <ul>
+                <li>物質燃燒是一種劇烈的氧化作用，需要<strong>空氣</strong>。</li>
+                <li>若空氣不流通（如用廣口瓶罩住蠟燭），物質無法持續燃燒。</li>
+                <li><strong>實驗變因</strong>：操縱變因（刻意改變）、控制變因（保持不變）、應變變因（結果）。</li>
+            </ul>
+            <h4>1-2 氧氣與燃燒的關係</h4>
+            <ul>
+                <li>空氣組成：<strong>氮氣</strong>（約78%）、<strong>氧氣</strong>（約21%）。</li>
+                <li><strong>助燃物</strong>：氧氣，能幫助燃燒。</li>
+                <li><strong>製造氧氣</strong>：雙氧水 + 催化劑（金針菇/胡蘿蔔/木瓜）→ 氧氣 + 水。</li>
+                <li><strong>檢驗氧氣</strong>：將點燃的線香伸入瓶中，會燃燒得更劇烈。</li>
+            </ul>
+
+            <h3>活動二：燃燒的條件與如何滅火</h3>
+            <h4>2-1 燃燒三要素</h4>
+            <ul>
+                <li><strong>可燃物</strong>：如木炭、紙張。</li>
+                <li><strong>助燃物</strong>：氧氣。</li>
+                <li><strong>達到燃點</strong>：物質燃燒所需的最低溫度。</li>
+            </ul>
+            <h4>2-2 滅火原理</h4>
+            <ul>
+                <li><strong>移除可燃物</strong>：開闢防火線、關閉瓦斯。</li>
+                <li><strong>隔絕助燃物</strong>：蓋鍋蓋、用燈蓋蓋熄酒精燈。</li>
+                <li><strong>降低溫度</strong>：灑水。</li>
+                <li><strong>注意</strong>：油鍋起火不可澆水！應蓋鍋蓋、關爐火。</li>
+            </ul>
+
+            <h3>活動三：為何會生鏽與如何防鏽</h3>
+            <h4>3-1 生鏽的原因</h4>
+            <ul>
+                <li>生鏽是<strong>緩慢的氧化作用</strong>，需要<strong>水</strong>和<strong>氧氣</strong>。</li>
+                <li>酸性溶液（如醋）會加速生鏽。</li>
+                <li>生鏽會消耗密閉容器內的氧氣。</li>
+            </ul>
+            <h4>3-2 防鏽的方法</h4>
+            <ul>
+                <li>原理：<strong>隔絕水和空氣</strong>。</li>
+                <li>方法：保持乾燥、塗油漆、上油、電鍍、合金（不鏽鋼）。</li>
+            </ul>
+        </div>
+        <div style="margin-top:20px;">
+            <button class="action-btn btn-close" onclick="closeStudyModal()">關閉筆記</button>
+        </div>
+    </div>
+</div>
+
 <!-- 成績結果彈窗 -->
-<div class="result-modal" id="resultModal">
-    <div class="result-card">
+<div class="modal-overlay" id="resultModal">
+    <div class="modal-card">
         <h2>🎉 測驗完成！</h2>
         <div class="score-display" id="displayScore">0</div>
         <div class="score-info">
@@ -521,19 +625,18 @@
             <p><strong>❌ 錯誤題號：</strong><br><span id="displayWrong" class="wrong-list">無</span></p>
         </div>
         <div class="btn-group">
-            <button class="action-btn btn-review" onclick="closeModal()">🔍 檢討錯題（看正確答案）</button>
+            <button class="action-btn btn-review" onclick="closeResultModal()">🔍 檢討錯題</button>
             <a href="#" id="mailLink" class="action-btn btn-mail">📧 寄送成績給老師</a>
-            <button class="action-btn btn-close" onclick="closeModal()">關閉視窗</button>
+            <button class="action-btn btn-close" onclick="closeResultModal()">關閉視窗</button>
         </div>
     </div>
 </div>
 
 <script>
     // ----------------------------------------
-    // 音效模組 (Web Audio API)
+    // 音效模組
     // ----------------------------------------
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    
     function playClickSound() {
         if (audioCtx.state === 'suspended') audioCtx.resume();
         const osc = audioCtx.createOscillator();
@@ -543,15 +646,14 @@
         osc.type = 'sine';
         osc.frequency.setValueAtTime(800, audioCtx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
-        gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
         osc.start();
         osc.stop(audioCtx.currentTime + 0.1);
     }
-
     function playSuccessSound() {
         if (audioCtx.state === 'suspended') audioCtx.resume();
-        const notes = [523.25, 659.25, 783.99, 1046.50]; // C Major Arpeggio
+        const notes = [523.25, 659.25, 783.99, 1046.50];
         let time = audioCtx.currentTime;
         notes.forEach((note, i) => {
             const osc = audioCtx.createOscillator();
@@ -568,112 +670,151 @@
     }
 
     // ----------------------------------------
-    // 題庫資料 (含解析與分類)
-    // act1: 燃燒與氣體, act2: 生鏽探討, act3: 防鏽與應用
+    // 100題題庫資料 (含改編)
     // ----------------------------------------
     const questions = [
-        // 簡單題 (1-20)
+        // === 活動一 (1-30) ===
         { id: 1, category: "act1", type: "easy", question: "空氣中含量最多的氣體是哪一種？", options: ["A. 氮氣", "B. 氧氣", "C. 二氧化碳", "D. 水蒸氣"], answerIndex: 0 },
         { id: 2, category: "act1", type: "easy", question: "空氣中大約有百分之幾的氧氣？", options: ["A. 78%", "B. 1%", "C. 21%", "D. 50%"], answerIndex: 2 },
         { id: 3, category: "act1", type: "easy", question: "物質燃燒時，空氣中的哪一種氣體能幫助物質燃燒？", options: ["A. 氮氣", "B. 二氧化碳", "C. 氧氣", "D. 氬氣"], answerIndex: 2 },
-        { id: 4, category: "act1", type: "easy", question: "物質燃燒所需要的可以燃燒的物質，我們稱為？", options: ["A. 助燃物", "B. 可燃物", "C. 燃點", "D. 催化劑"], answerIndex: 1 },
-        { id: 5, category: "act1", type: "easy", question: "下列哪一種物質可以幫助燃燒？", options: ["A. 氮氣", "B. 二氧化碳", "C. 氧氣", "D. 氦氣"], answerIndex: 2 },
-        { id: 6, category: "act1", type: "easy", question: "燃燒時所需的溫度條件，我們稱為？", options: ["A. 沸點", "B. 熔點", "C. 燃點", "D. 冰點"], answerIndex: 2 },
-        { id: 7, category: "act1", type: "easy", question: "下列哪一個選項是不屬於燃燒三要素？", options: ["A. 可燃物", "B. 助燃物", "C. 燃點", "D. 水"], answerIndex: 3 },
-        { id: 8, category: "act1", type: "easy", question: "將點燃的線香伸入充滿氧氣的瓶中，線香會有什麼變化？", options: ["A. 立刻熄滅", "B. 燒得更旺盛", "C. 沒變化", "D. 冒黑煙"], answerIndex: 1 },
-        { id: 9, category: "act1", type: "easy", question: "烤肉時，木炭、木材、紙張屬於燃燒三要素中的哪一項？", options: ["A. 可燃物", "B. 助燃物", "C. 燃點", "D. 溫度"], answerIndex: 0 },
-        { id: 10, category: "act2", type: "easy", question: "鐵生鏽後，表面通常會出現什麼顏色？", options: ["A. 綠色", "B. 棕色", "C. 黑色", "D. 銀色"], answerIndex: 1 },
-        { id: 11, category: "act2", type: "easy", question: "下列哪一種現象是鐵生鏽的結果？", options: ["A. 表面變得粗糙", "B. 變得更堅硬", "C. 導電性變好", "D. 變得光滑"], answerIndex: 0 },
-        { id: 12, category: "act2", type: "easy", question: "鐵生鏽是一種什麼反應？", options: ["A. 劇烈的燃燒", "B. 緩慢的氧化反應", "C. 物理變化", "D. 中和反應"], answerIndex: 1 },
-        { id: 13, category: "act3", type: "easy", question: "下列哪一個方法是利用隔絕水和空氣來防鏽？", options: ["A. 放在戶外", "B. 浸泡在水中", "C. 曝曬太陽", "D. 在鐵窗上塗油漆"], answerIndex: 3 },
-        { id: 14, category: "act3", type: "easy", question: "腳踏車鏈條上油可以防鏽，這是利用了哪種原理？", options: ["A. 增加摩擦力", "B. 降低溫度", "C. 隔絕水和空氣", "D. 增加美觀"], answerIndex: 2 },
-        { id: 15, category: "act1", type: "easy", question: "烤肉時，對著木炭搧風是為了提供什麼物質，使燃燒更旺盛？", options: ["A. 空氣（氧氣）", "B. 二氧化碳", "C. 水蒸氣", "D. 氮氣"], answerIndex: 0 },
-        { id: 16, category: "act1", type: "easy", question: "油鍋起火時，下列哪一個動作是絕對不可以做的？", options: ["A. 蓋上鍋蓋", "B. 關閉瓦斯", "C. 澆水滅火", "D. 遠離火源"], answerIndex: 2 },
-        { id: 17, category: "act1", type: "easy", question: "滅火的原理是移除燃燒三要素中的其中一項，若灑水滅火是移除哪一項？", options: ["A. 移除可燃物", "B. 隔絕助燃物", "C. 降低溫度，使其無法達到燃點", "D. 增加氧氣"], answerIndex: 2 },
-        { id: 18, category: "act3", type: "easy", question: "「不鏽鋼」餐具不易生鏽，這是利用了哪種防鏽方法？", options: ["A. 電鍍", "B. 合金", "C. 塗油", "D. 保持乾燥"], answerIndex: 1 },
-        { id: 19, category: "act1", type: "easy", question: "實驗中，利用雙氧水（過氧化氫）和金針菇作用，主要是為了製造出什麼氣體？", options: ["A. 二氧化碳", "B. 氧氣", "C. 氮氣", "D. 氫氣"], answerIndex: 1 },
-        { id: 20, category: "act2", type: "easy", question: "物質燃燒與鐵生鏽有什麼共同的條件？", options: ["A. 都需要氧氣", "B. 都需要高溫", "C. 都會發光", "D. 速度都很快"], answerIndex: 0 },
-
-        // 適中題 (21-40)
-        { id: 21, category: "act1", type: "medium", question: "用廣口瓶罩住燃燒中的蠟燭，蠟燭會漸漸熄滅，這個實驗結果證明了什麼？", options: ["A. 蠟燭燒完了", "B. 瓶子太小", "C. 溫度太高", "D. 物質燃燒需要空氣"], answerIndex: 3 },
-        { id: 22, category: "act1", type: "medium", question: "如果用廣口瓶將燃燒中的蠟燭蓋住（實驗組），另一支蠟燭在空氣中燃燒（對照組），請問在這個實驗中，「空氣是否流通」屬於哪種變因？", options: ["A. 操縱變因", "B. 控制變因", "C. 應變變因", "D. 無法判斷"], answerIndex: 0 },
-        { id: 23, category: "act1", type: "medium", question: "麵包製作時加入酵母菌產生的氣體，可以使麵包蓬鬆，此氣體是？", options: ["A. 氧氣", "B. 氮氣", "C. 二氧化碳", "D. 氫氣"], answerIndex: 2 },
-        { id: 24, category: "act3", type: "medium", question: "餅乾包裝中通常填充氮氣，是利用氮氣的哪種特性？", options: ["A. 氮氣很便宜", "B. 氮氣不易與其他物質反應", "C. 氮氣可以殺菌", "D. 氮氣有香味"], answerIndex: 1 },
-        { id: 25, category: "act1", type: "medium", question: "檢驗氧氣的方法是利用它具有幫助燃燒的特性，請問下列哪一種線香放入氧氣瓶中，最能確認氧氣的存在？", options: ["A. 潮濕的線香", "B. 熄滅的線香", "C. 未點燃的線香", "D. 點燃的線香"], answerIndex: 3 },
-        { id: 26, category: "act1", type: "medium", question: "森林大火時，消防隊會砍倒部分樹木，開闢防火線，這是利用了燃燒三要素中的哪一項滅火原理？", options: ["A. 移除可燃物", "B. 隔絕助燃物", "C. 降低溫度", "D. 增加濕度"], answerIndex: 0 },
-        { id: 27, category: "act1", type: "medium", question: "小華的瓦斯爐旁的抹布起火了，他應該趕快做什麼來滅火？", options: ["A. 吹氣", "B. 拿走抹布", "C. 倒油", "D. 尖叫"], answerIndex: 1 },
-        { id: 28, category: "act1", type: "medium", question: "油鍋起火時，媽媽蓋上鍋蓋，是利用移除燃燒三要素中的哪一個條件來滅火？", options: ["A. 可燃物", "B. 溫度", "C. 隔絕助燃物", "D. 壓力"], answerIndex: 2 },
-        { id: 29, category: "act1", type: "medium", question: "油鍋起火，蓋上鍋蓋後，為什麼不能馬上打開？", options: ["A. 怕油噴出來", "B. 怕鍋蓋壞掉", "C. 怕煙跑出來", "D. 油溫太高，可能會復燃"], answerIndex: 3 },
-        { id: 30, category: "act2", type: "medium", question: "鐵生鏽需要水和哪一種氣體？", options: ["A. 氮氣", "B. 二氧化碳", "C. 氧氣", "D. 氫氣"], answerIndex: 2 },
-        { id: 31, category: "act2", type: "medium", question: "影響鐵生鏽的實驗中，鋼絲絨球「滴水」和「無滴水」的差異，主要在驗證哪個因素的影響？", options: ["A. 氧氣", "B. 溫度", "C. 光線", "D. 水"], answerIndex: 3 },
-        { id: 32, category: "act2", type: "medium", question: "影響鐵生鏽的實驗中，鋼絲絨球「滴醋」和「滴水」的差異，主要在驗證哪個因素的影響？", options: ["A. 水量多寡", "B. 溫度高低", "C. 酸性水溶液", "D. 空氣流通"], answerIndex: 2 },
-        { id: 33, category: "act2", type: "medium", question: "根據實驗結果，滴醋的鋼絲絨球生鏽程度會比滴水的鋼絲絨球如何？", options: ["A. 更嚴重", "B. 較輕微", "C. 完全一樣", "D. 不會生鏽"], answerIndex: 0 },
-        { id: 34, category: "act2", type: "medium", question: "檢驗鐵生鏽是否消耗氧氣的實驗中，哪個瓶中的蠟燭會比較快熄滅？", options: ["A. 空瓶子", "B. 放入乾燥鋼絲絨球的廣口瓶", "C. 放入滴醋鋼絲絨球的廣口瓶", "D. 放入水的廣口瓶"], answerIndex: 2 },
-        { id: 35, category: "act3", type: "medium", question: "鐵生鏽會使鐵製品的外觀變得不美觀，並可能造成物品損壞，影響？", options: ["A. 安全", "B. 重量", "C. 大小", "D. 磁性"], answerIndex: 0 },
-        { id: 36, category: "act2", type: "medium", question: "為了避免實驗中的水或酸性溶液快速蒸發，我們需要將塑膠杯口蓋緊，這是屬於實驗設計中的哪一種變因？", options: ["A. 操縱變因", "B. 應變變因", "C. 控制變因", "D. 無法判斷"], answerIndex: 2 },
-        { id: 37, category: "act2", type: "medium", question: "鐵生鏽後會產生棕色、易碎的鐵鏽，請問「生鏽」前後，物質的性質是否有改變？", options: ["A. 沒有改變", "B. 有改變", "C. 變重了而已", "D. 變輕了而已"], answerIndex: 1 },
-        { id: 38, category: "act1", type: "medium", question: "下列哪一種氣體在空氣中含量約為78%，但在一般情況下不易與其他物質反應？", options: ["A. 氮氣", "B. 氧氣", "C. 二氧化碳", "D. 氬氣"], answerIndex: 0 },
-        { id: 39, category: "act1", type: "medium", question: "若發現燃燒中的蠟燭火勢太小，我們可以用管子在蠟燭周圍注入哪種氣體來維持燃燒？", options: ["A. 氮氣", "B. 氧氣", "C. 二氧化碳", "D. 氦氣"], answerIndex: 1 },
-        { id: 40, category: "act1", type: "medium", question: "實驗結束時，用燈蓋蓋熄酒精燈，是利用了哪種滅火原理？", options: ["A. 降低溫度", "B. 移除可燃物", "C. 增加壓力", "D. 隔絕助燃物"], answerIndex: 3 },
-
-        // 困難題 (41-50)
-        { id: 41, category: "act1", type: "hard", question: "「空氣對物質燃燒的影響」實驗中，控制變因不包括下列哪一項？", options: ["A. 蠟燭的大小", "B. 瓶子的大小", "C. 空氣是否流通", "D. 實驗地點"], answerIndex: 2 },
-        { id: 42, category: "act2", type: "hard", question: "鐵生鏽會消耗氧氣，請問鐵生鏽與哪種現象在化學反應上有相似之處？", options: ["A. 燃燒", "B. 蒸發", "C. 凝固", "D. 溶解"], answerIndex: 0 },
-        { id: 43, category: "act1", type: "hard", question: "關於燃燒三要素，下列敘述何者正確？", options: ["A. 只要有可燃物就會燃燒", "B. 只要有氧氣就會燃燒", "C. 只要溫度高就會燃燒", "D. 溫度達到燃點，即使沒有火源，物質也可能開始燃燒（自燃）"], answerIndex: 3 },
-        { id: 44, category: "act3", type: "hard", question: "腳踏車把手常使用「電鍍」技術來防鏽，其原理最接近下列哪一種防鏽方法？", options: ["A. 保持乾燥", "B. 隔絕水和空氣", "C. 降低溫度", "D. 移除可燃物"], answerIndex: 1 },
-        { id: 45, category: "act1", type: "hard", question: "小明將鋁粉灑入營火中，火勢突然變得非常劇烈，這是因為？", options: ["A. 鋁粉是助燃物", "B. 鋁粉降低了燃點", "C. 鋁粉產生了氧氣", "D. 物質與空氣接觸面積變大，加速燃燒"], answerIndex: 3 },
-        { id: 46, category: "act2", type: "hard", question: "小華在進行影響鐵生鏽的實驗時，應變變因是什麼？", options: ["A. 鋼絲絨球的大小", "B. 鋼絲絨球生鏽的情形", "C. 滴加的液體種類", "D. 放置的時間"], answerIndex: 1 },
-        { id: 47, category: "act1", type: "hard", question: "若要加速分解雙氧水製造氧氣，除了金針菇，還可以加入下列哪一種物質？", options: ["A. 胡蘿蔔", "B. 鐵塊", "C. 塑膠片", "D. 玻璃珠"], answerIndex: 0 },
-        { id: 48, category: "act3", type: "hard", question: "「暖暖包」拆開後會放熱變暖，這是利用了下列哪一個原理？", options: ["A. 鐵粉摩擦生熱", "B. 鐵粉與氧氣的氧化反應", "C. 鐵粉燃燒", "D. 鐵粉吸收陽光"], answerIndex: 1 },
-        { id: 49, category: "act1", type: "hard", question: "下列滅火方式中，哪一項原理是「移除可燃物」？", options: ["A. 用水澆熄火堆", "B. 消防隊將煉油廠附近的油桶搬走", "C. 用滅火器噴灑泡沫", "D. 用沙土覆蓋火源"], answerIndex: 1 },
-        { id: 50, category: "act2", type: "hard", question: "實驗發現水會使鐵加速生鏽，但水本身在生鏽反應中不是反應物，這表示水在鐵生鏽中扮演了什麼角色？", options: ["A. 催化劑（加速反應）", "B. 阻礙劑", "C. 燃料", "D. 產物"], answerIndex: 0 }
+        { id: 4, category: "act1", type: "easy", question: "下列哪一種物質可以幫助燃燒？", options: ["A. 氮氣", "B. 二氧化碳", "C. 氧氣", "D. 氦氣"], answerIndex: 2 },
+        { id: 5, category: "act1", type: "easy", question: "將點燃的線香伸入充滿氧氣的瓶中，線香會有什麼變化？", options: ["A. 立刻熄滅", "B. 燒得更旺盛", "C. 沒變化", "D. 冒黑煙"], answerIndex: 1 },
+        { id: 6, category: "act1", type: "easy", question: "在實驗室中，製造氧氣需要加入哪兩種物質？", options: ["A. 醋與小蘇打", "B. 水與鹽", "C. 酒精與水", "D. 雙氧水與金針菇"], answerIndex: 3 },
+        { id: 7, category: "act1", type: "easy", question: "「空氣對物質燃燒的影響」實驗中，若廣口瓶內蠟燭熄滅，證明了什麼？", options: ["A. 燃燒需要高溫", "B. 燃燒需要空氣", "C. 瓶子太小", "D. 蠟燭品質不好"], answerIndex: 1 },
+        { id: 8, category: "act1", type: "easy", question: "空氣是由多種氣體組成，其中含量約 78% 的是什麼？(選詞填空)", options: ["A. 氧氣", "B. 氮氣", "C. 二氧化碳", "D. 氫氣"], answerIndex: 1 },
+        { id: 9, category: "act1", type: "easy", question: "氧氣可以幫助物質燃燒，因此氧氣在燃燒三要素中屬於什麼？(選詞填空)", options: ["A. 可燃物", "B. 助燃物", "C. 燃點", "D. 催化劑"], answerIndex: 1 },
+        { id: 10, category: "act1", type: "easy", question: "檢驗氧氣時，會利用它幫助燃燒的特性，將什麼放入氣體中觀察？(選詞填空)", options: ["A. 潮濕的石蕊試紙", "B. 澄清石灰水", "C. 點燃的線香", "D. 熄滅的木炭"], answerIndex: 2 },
+        { id: 11, category: "act1", type: "easy", question: "在製造氧氣的實驗中，金針菇可以加速氧氣的產生。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 12, category: "act1", type: "easy", question: "只有蠟燭燃燒需要空氣，木炭燃燒則不需要空氣。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 1 },
+        { id: 13, category: "act1", type: "easy", question: "將蠟燭用廣口瓶蓋住，無論多久，燭火都不會熄滅。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 1 },
+        { id: 14, category: "act1", type: "easy", question: "麵包製作時，酵母菌產生的二氧化碳氣體可以幫助麵包蓬鬆。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 15, category: "act1", type: "easy", question: "在製造氧氣時，如果不小心接觸到雙氧水，應使用大量清水沖洗。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 16, category: "act1", type: "medium", question: "餅乾包裝內常填充氮氣，是利用氮氣的什麼特性？", options: ["A. 氮氣不易與其他物質反應", "B. 氮氣是助燃物", "C. 氮氣比氧氣重", "D. 氮氣比氧氣更容易取得"], answerIndex: 0 },
+        { id: 17, category: "act1", type: "medium", question: "下列關於「空氣對物質燃燒的影響」實驗的敘述，何者是不正確的？", options: ["A. 空氣是否流通屬於操縱變因", "B. 蠟燭的粗細、長短屬於控制變因", "C. 蠟燭燃燒的情形屬於應變變因", "D. 實驗時一次可以改變多個變因，以驗證假設"], answerIndex: 3 },
+        { id: 18, category: "act1", type: "medium", question: "將切碎的胡蘿蔔和雙氧水混合後，會產生什麼現象？", options: ["A. 產生紅色煙霧", "B. 雙氧水結冰", "C. 起火燃燒", "D. 產生許多氣泡"], answerIndex: 3 },
+        { id: 19, category: "act1", type: "medium", question: "烤肉時，對著木炭搧風可以讓火燒得更旺盛，這是因為搧風提供了什麼？", options: ["A. 更多的可燃物", "B. 更多的氧氣", "C. 提高了燃點", "D. 降低了溫度"], answerIndex: 1 },
+        { id: 20, category: "act1", type: "medium", question: "實驗中用廣口瓶蓋住點燃的蠟燭，觀察到的「蠟燭燃燒情形」屬於哪一種變因？(選詞填空)", options: ["A. 操縱變因", "B. 控制變因", "C. 應變變因", "D. 環境變因"], answerIndex: 2 },
+        { id: 21, category: "act1", type: "medium", question: "搧風可以讓火燒得更旺盛，這是因為搧風可以加快什麼，持續提供充足的氧氣？(選詞填空)", options: ["A. 空氣流通", "B. 溫度上升", "C. 燃點降低", "D. 壓力增加"], answerIndex: 0 },
+        { id: 22, category: "act1", type: "medium", question: "氣體濃度越高，燃燒得越激烈，所以空氣中含有大量氮氣的好處是避免猛烈而不可控制的燃燒。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 23, category: "act1", type: "medium", question: "為了使實驗結果更準確，除了操縱變因，其他如蠟燭的粗細長度等條件，都要保持不變。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 26, category: "act1", type: "hard", question: "實驗中，將蠟燭放在空氣中，沒有點燃它，蠟燭不會燃燒，此時缺少燃燒三要素中的哪一項？", options: ["A. 可燃物", "B. 助燃物", "C. 達到燃點", "D. 氧氣"], answerIndex: 2 },
+        { id: 27, category: "act1", type: "hard", question: "關於空氣組成和特性，下列敘述何者正確？", options: ["A. 氧氣含量約 78%，是空氣中含量最多的氣體", "B. 二氧化碳的助燃性比氧氣好", "C. 氮氣反應性低，在一般情況下不易與其他物質反應", "D. 氧氣是惰性氣體，不與其他物質反應"], answerIndex: 2 },
+        { id: 28, category: "act1", type: "hard", question: "實驗設計時，一次實驗只能改變一個變因的目的是什麼？", options: ["A. 節省實驗材料", "B. 確保實驗結果的應變變因是由操縱變因造成", "C. 縮短實驗時間", "D. 確保實驗組和對照組都能成功"], answerIndex: 1 },
+        
+        // === 活動二 (31-75) ===
+        { id: 31, category: "act2", type: "easy", question: "物質燃燒所需的溫度條件，我們稱為？", options: ["A. 沸點", "B. 熔點", "C. 燃點", "D. 冰點"], answerIndex: 2 },
+        { id: 32, category: "act2", type: "easy", question: "物質燃燒時，下列哪一個選項是不屬於燃燒三要素？", options: ["A. 可燃物", "B. 助燃物", "C. 燃點", "D. 水"], answerIndex: 3 },
+        { id: 33, category: "act2", type: "easy", question: "油鍋起火時，下列哪一個動作是絕對不可以做的？", options: ["A. 蓋上鍋蓋", "B. 關閉瓦斯", "C. 澆水滅火", "D. 遠離火源"], answerIndex: 2 },
+        { id: 34, category: "act2", type: "easy", question: "下列哪種滅火方式是利用「隔絕助燃物」的原理？", options: ["A. 灑水", "B. 開闢防火線", "C. 用鍋蓋蓋住油鍋", "D. 搬走油桶"], answerIndex: 2 },
+        { id: 35, category: "act2", type: "easy", question: "烤肉時，木炭、木材、紙張屬於燃燒三要素中的哪一項？", options: ["A. 可燃物", "B. 助燃物", "C. 燃點", "D. 溫度"], answerIndex: 0 },
+        { id: 36, category: "act2", type: "easy", question: "滅火的原理是移除燃燒三要素中的其中一項，若灑水滅火是移除哪一項？", options: ["A. 移除可燃物", "B. 隔絕助燃物", "C. 降低溫度", "D. 增加氧氣"], answerIndex: 2 },
+        { id: 37, category: "act2", type: "easy", question: "爐火忘了關、油鍋起火與電線短路，是近年來家庭火災的哪三大主因？", options: ["A. 三大主因", "B. 四大主因", "C. 五大主因", "D. 六大主因"], answerIndex: 0 },
+        { id: 38, category: "act2", type: "easy", question: "燃燒三要素分別是可燃物、助燃物和什麼？(選詞填空)", options: ["A. 二氧化碳", "B. 水", "C. 達到燃點", "D. 陽光"], answerIndex: 2 },
+        { id: 39, category: "act2", type: "easy", question: "滅火的原理是移除燃燒三要素的其中一項，如果用水澆熄營火，這是利用了什麼原理？(選詞填空)", options: ["A. 隔絕助燃物", "B. 降低溫度", "C. 移除可燃物", "D. 增加壓力"], answerIndex: 1 },
+        { id: 40, category: "act2", type: "easy", question: "油鍋起火時，媽媽蓋上鍋蓋，這是利用了什麼滅火原理？(選詞填空)", options: ["A. 隔絕助燃物", "B. 降低溫度", "C. 移除可燃物", "D. 增加濕度"], answerIndex: 0 },
+        { id: 41, category: "act2", type: "easy", question: "燃燒三要素中只要移除其中一個條件，就能滅火。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 42, category: "act2", type: "easy", question: "移除森林中部分的樹木，開闢防火線，是隔絕助燃物的滅火方式。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 1 },
+        { id: 43, category: "act2", type: "easy", question: "應定期清理抽油煙機的油汙，避免高溫引燃油垢，引發火災。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 44, category: "act2", type: "easy", question: "燃點較高的物質通常較容易被點燃。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 1 },
+        { id: 45, category: "act2", type: "easy", question: "在火場中，一旦溫度超過可燃物的燃點，即使沒有點火，可燃物也可能開始自燃。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 46, category: "act2", type: "medium", question: "油鍋起火後，蓋上鍋蓋並關閉爐火，靜待降溫後才能開蓋，這是為了移除哪一項要素，避免復燃？", options: ["A. 移除可燃物", "B. 隔絕助燃物", "C. 降低溫度", "D. 提高燃點"], answerIndex: 2 },
+        { id: 47, category: "act2", type: "medium", question: "森林大火時，消防隊會砍倒部分樹木，開闢防火線，這是利用了燃燒三要素中的哪一項滅火原理？", options: ["A. 移除可燃物", "B. 隔絕助燃物", "C. 降低溫度", "D. 降低燃點"], answerIndex: 0 },
+        { id: 48, category: "act2", type: "medium", question: "下列哪一項不是預防火災的正確方法？", options: ["A. 爐火周圍不堆放易燃物", "B. 防火巷保持淨空", "C. 只要時間不長，可以隨時離開爐火", "D. 定期清理抽油煙機油汙"], answerIndex: 2 },
+        { id: 49, category: "act2", type: "medium", question: "用燈蓋蓋熄酒精燈，其滅火原理是？", options: ["A. 移除可燃物", "B. 隔絕助燃物", "C. 降低溫度", "D. 減少燃點"], answerIndex: 1 },
+        { id: 50, category: "act2", type: "medium", question: "「弓弦鑽木法」中，利用枯枝前端與鑽孔快速摩擦的目的是什麼？", options: ["A. 提供可燃物", "B. 提供助燃物", "C. 產生熱使溫度達到燃點", "D. 隔絕空氣"], answerIndex: 2 },
+        { id: 51, category: "act2", type: "medium", question: "祭祀燃燒紙錢時，如果一下子放入太多紙錢，火反而會熄滅，請問是什麼原因造成？", options: ["A. 紙錢不可以燃燒", "B. 放入大量的紙錢會隔絕空氣", "C. 容器太小裝不下", "D. 容器底部有水"], answerIndex: 1 },
+        { id: 52, category: "act2", type: "medium", question: "烤肉時，將木材劈成木屑，更容易點燃，這是因為？", options: ["A. 木屑的燃點比較低", "B. 木屑與空氣接觸的面積變大，加速燃燒", "C. 木屑的含氧量增加", "D. 木屑可以作為催化劑"], answerIndex: 1 },
+        { id: 53, category: "act2", type: "medium", question: "爐火忘了關、油煎時引燃油鍋與電線短路等，是近年來家庭火災的幾大主因？(選詞填空)", options: ["A. 一大", "B. 二大", "C. 三大", "D. 四大"], answerIndex: 2 },
+        { id: 54, category: "act2", type: "medium", question: "煉油廠發生火災，消防隊趕緊搬走廠房內的大批油桶，這是利用了什麼滅火原理？(選詞填空)", options: ["A. 移除可燃物", "B. 隔絕助燃物", "C. 降低溫度", "D. 增加氧氣"], answerIndex: 0 },
+        { id: 55, category: "act2", type: "medium", question: "電器造成火災的關鍵是電路發出高熱，當旁邊堆置什麼時，燃燒三要素都具備，則會造成火災？(選詞填空)", options: ["A. 可燃物", "B. 絕緣體", "C. 金屬", "D. 水"], answerIndex: 0 },
+        { id: 63, category: "act2", type: "medium", question: "下列哪一個選項是利用了移除「助燃物」的滅火原理？", options: ["A. 開闢森林防火線", "B. 用大量泡沫覆蓋火焰", "C. 消防隊灑水滅火", "D. 搬走火場周圍的油桶"], answerIndex: 1 },
+        { id: 64, category: "act2", type: "medium", question: "關於燃點，下列敘述何者正確？", options: ["A. 燃點越高的物質越容易點燃", "B. 紙張的燃點比木炭低", "C. 燃點是物質燃燒後所達到的最高溫度", "D. 蠟燭燃燒時，只需要達到燃點，不需要氧氣"], answerIndex: 1 },
+        { id: 65, category: "act2", type: "medium", question: "下列哪一個現象與「降低溫度」的滅火原理最相似？", options: ["A. 消防隊員用沙土覆蓋地上的火", "B. 火源旁邊的紙箱被搬走", "C. 營火晚會結束後用水澆熄營火", "D. 油鍋起火時蓋上鍋蓋"], answerIndex: 2 },
+        { id: 66, category: "act2", type: "hard", question: "關於燃燒三要素，下列敘述何者正確？", options: ["A. 物質達到燃點後，一定要有火源才能燃燒", "B. 助燃物只有氧氣", "C. 溫度達到燃點，即使沒有火源，物質也可能開始燃燒（自燃）", "D. 滅火時必須同時移除三個要素"], answerIndex: 2 },
+        { id: 67, category: "act2", type: "hard", question: "關於滅火的方式，下列敘述何者錯誤？", options: ["A. 滅火器噴灑的二氧化碳是利用窒息法", "B. 灑水滅火是利用冷卻法", "C. 設置防火巷是利用除去法", "D. 乾粉滅火器是利用降低溫度的方法滅火"], answerIndex: 3 },
+        { id: 68, category: "act2", type: "hard", question: "在火場中，濃煙中通常含有什麼氣體，會對人體造成致命危害？", options: ["A. 氮氣", "B. 氧氣", "C. 一氧化碳", "D. 二氧化碳"], answerIndex: 2 },
+        { id: 69, category: "act2", type: "hard", question: "下列敘述中，哪一項最能夠體現燃燒三要素「達到燃點」的重要性？", options: ["A. 木材被劈成木屑比木塊更容易燃燒", "B. 烤肉時需要先用火種持續加熱木炭", "C. 用泡沫覆蓋油火以隔絕空氣", "D. 搧風可以讓火燒得更旺"], answerIndex: 1 },
+        { id: 70, category: "act2", type: "hard", question: "關於拉瓦節推翻「燃素說」的實驗，他發現金屬燃燒之後重量並沒有變輕，反而變重了，這推測物質燃燒時是與什麼結合的反應？", options: ["A. 氫氣", "B. 氧氣", "C. 燃素", "D. 水"], answerIndex: 1 },
+        
+        // === 活動三 (76-100) ===
+        { id: 76, category: "act3", type: "easy", question: "鐵生鏽後，表面通常會出現什麼顏色？", options: ["A. 綠色", "B. 棕色", "C. 黑色", "D. 銀色"], answerIndex: 1 },
+        { id: 77, category: "act3", type: "easy", question: "下列哪一個方法是利用隔絕水和空氣來防鏽？", options: ["A. 放在戶外", "B. 浸泡在水中", "C. 曝曬太陽", "D. 在鐵窗上塗油漆"], answerIndex: 3 },
+        { id: 78, category: "act3", type: "easy", question: "「不鏽鋼」餐具不易生鏽，這是利用了哪種防鏽方法？", options: ["A. 電鍍", "B. 合金", "C. 塗油", "D. 保持乾燥"], answerIndex: 1 },
+        { id: 79, category: "act3", type: "easy", question: "鐵生鏽時會用掉下列哪一種氣體呢？", options: ["A. 氮氣", "B. 二氧化碳", "C. 氧氣", "D. 氦氣"], answerIndex: 2 },
+        { id: 80, category: "act3", type: "easy", question: "鐵生鏽是一種什麼速度的氧化作用？(選詞填空)", options: ["A. 劇烈", "B. 緩慢", "C. 瞬間", "D. 爆炸性"], answerIndex: 1 },
+        { id: 81, category: "act3", type: "easy", question: "腳踏車鏈條上油可以防鏽，這是利用了什麼原理？(選詞填空)", options: ["A. 增加摩擦", "B. 隔絕水和空氣", "C. 降低溫度", "D. 增加美觀"], answerIndex: 1 },
+        { id: 82, category: "act3", type: "easy", question: "為了防鏽，鐵製品會進行電鍍，在表面鍍上一層金屬，例如鍍鋅或什麼？(選詞填空)", options: ["A. 鐵", "B. 鉻", "C. 碳", "D. 鈣"], answerIndex: 1 },
+        { id: 83, category: "act3", type: "easy", question: "鐵生鏽會使鐵製品的外觀變得不美觀，並造成物品損壞，影響安全。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 84, category: "act3", type: "easy", question: "鐵生鏽與蠟燭燃燒最大的共同點是都需要氧氣。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 85, category: "act3", type: "easy", question: "腳踏車鏈條淋雨後應盡快擦乾，這是為了移除水這個生鏽的關鍵因素。", options: ["⭕ 正確", "❌ 錯誤"], answerIndex: 0 },
+        { id: 86, category: "act3", type: "medium", question: "在實驗中，鋼絲絨球「滴醋」比「滴水」生鏽更嚴重，這證明了什麼？", options: ["A. 酸性水溶液會加速鐵生鏽", "B. 醋比水含有更多氧氣", "C. 鐵生鏽不需要水", "D. 醋是可燃物"], answerIndex: 0 },
+        { id: 87, category: "act3", type: "medium", question: "下列哪一種處理方式無法防止物品生鏽？", options: ["A. 在鑰匙表面電鍍", "B. 在鐵窗的表面塗上油漆", "C. 用不鏽鋼等合金製作餐具", "D. 將鋼絲絨球浸泡醋"], answerIndex: 3 },
+        { id: 88, category: "act3", type: "medium", question: "檢驗鐵生鏽是否消耗氧氣的實驗中，哪個瓶中的蠟燭會比較快熄滅？", options: ["A. 放在新鮮空氣中的蠟燭", "B. 放入滴醋鋼絲絨球的廣口瓶", "C. 放入保持乾燥鋼絲絨球的廣口瓶", "D. 放入滴水的廣口瓶"], answerIndex: 1 },
+        { id: 89, category: "act3", type: "medium", question: "小鈞買了一個鐵製的徽章，他要如何保存，徽章才不容易生鏽？", options: ["A. 經常用沾了清水的毛巾擦拭", "B. 放在有防潮功能的櫃子裡", "C. 用醋浸泡後，裝到夾鏈袋中保存", "D. 經常用熱水清洗"], answerIndex: 1 },
+        { id: 90, category: "act3", type: "medium", question: "暖暖包拆開後會放熱變暖，這是利用了鐵粉與什麼的緩慢氧化反應？(選詞填空)", options: ["A. 水", "B. 二氧化碳", "C. 氧氣", "D. 氮氣"], answerIndex: 2 },
+        { id: 91, category: "act3", type: "medium", question: "實驗發現水會使鐵加速生鏽，但水本身在生鏽反應中不是反應物，這表示水在鐵生鏽中扮演了什麼角色？(選詞填空)", options: ["A. 燃料", "B. 助燃物", "C. 產物", "D. 加速反應(催化劑)"], answerIndex: 3 },
+        { id: 96, category: "act3", type: "hard", question: "下列關於鐵生鏽的實驗設計與結論，何者正確？", options: ["A. 鐵生鏽需要達到燃點", "B. 生鏽會產生二氧化碳", "C. 鐵生鏽會消耗氧氣，所以是氧化反應", "D. 鐵生鏽前後物質的性質沒有改變"], answerIndex: 2 },
+        { id: 97, category: "act3", type: "hard", question: "關於防鏽的方法，下列敘述何者錯誤？", options: ["A. 在鐵窗上塗油漆可以隔絕水和空氣", "B. 不鏽鋼是利用合金原理防鏽", "C. 電鍍的原理是利用電流將鐵與其他金屬混合形成合金", "D. 保持乾燥可避免生鏽"], answerIndex: 2 },
+        { id: 98, category: "act3", type: "hard", question: "若要讓鐵釘電鍍一層銅，應將鐵釘接在電源的哪個極？", options: ["A. 正極", "B. 負極", "C. 不分正負極", "D. 只能在交流電下操作"], answerIndex: 1 }
     ];
 
+    // ----------------------------------------
+    // 素養簡答題資料 (含改編)
+    // ----------------------------------------
     const literacyQuestions = [
-        { id: 1, question: "烤肉與助燃物：小晴爸爸搧風使火變旺，是提供了什麼？", hint: "💡 提示：燃燒三要素中，空氣裡有哪一種氣體可以幫助燃燒？" },
-        { id: 2, question: "家庭火災預防：避免在插座周圍堆放什麼？這是移除哪個燃燒要素？", hint: "💡 提示：想想看，堆放的雜物如果燒起來了，它們算是「可燃物」還是「助燃物」？" },
-        { id: 3, question: "廚房油鍋起火：蓋上鍋蓋是利用哪種滅火原理？為何不能馬上打開？", hint: "💡 提示：鍋蓋可以把火跟外面的空氣隔開。如果馬上打開，空氣跑進去會發生什麼事？" },
-        { id: 4, question: "戶外鐵器生鏽：為何基隆（多雨）的腳踏車比室內的更容易生鏽？", hint: "💡 提示：生鏽需要「水」和「氧氣」。戶外下雨時，這兩個條件是不是都很充足？" },
-        { id: 5, question: "不鏽鋼餐具：「不鏽鋼」使用了哪種防鏽方法？", hint: "💡 提示：不鏽鋼不是純鐵，是混合了其他金屬變成的「Ｏ金」。" },
-        { id: 6, question: "森林大火滅火：開闢「防火線」是利用哪種滅火原理？", hint: "💡 提示：防火線就是把樹先砍掉，沒有了樹（可燃物），火還能燒過來嗎？" },
-        { id: 7, question: "燃點的應用：為何火種（紙）很快點燃，木炭卻要加熱很久？", hint: "💡 提示：紙一點就著火，木炭要燒很久。這跟物質開始燃燒需要的「溫度」（燃點）高低有關喔！" },
-        { id: 8, question: "製造氧氣的安全：雙氧水接觸皮膚應如何處理？", hint: "💡 提示：被化學藥品潑到，第一步通常都是用大量的「ＯＯ」沖洗。" },
-        { id: 9, question: "食品保鮮：為何零食包裝填充「氮氣」而不是氧氣？", hint: "💡 提示：氧氣容易讓食物氧化變質。氮氣比較「懶惰」，不喜歡跟別人起反應，適合保鮮嗎？" },
-        { id: 10, question: "防鏽方法：擦乾剪刀與塗油分別是為了移除或隔絕什麼？", hint: "💡 提示：水和空氣是生鏽幫手。擦乾是為了去除水，塗油像穿雨衣，可以隔絕什麼？" }
+        { id: 24, category: "act1", question: "在「製造氧氣」的實驗中，金針菇的作用最接近於哪一項物質？", hint: "💡 提示：它不是反應物，但是可以加快反應速度。" },
+        { id: 25, category: "act1", question: "為什麼烤肉架旁邊要設計許多孔洞？", hint: "💡 提示：跟空氣流通有關，為了提供什麼？" },
+        { id: 29, category: "act1", question: "假設你要設計一個實驗，探究「蠟燭的粗細對燃燒時間的影響」，請問這個實驗中的操縱變因是什麼？", hint: "💡 提示：操縱變因是你刻意改變的條件。" },
+        { id: 30, category: "act1", question: "如果將未點燃的線香放入充滿氧氣的廣口瓶中，線香會開始燃燒嗎？為什麼？", hint: "💡 提示：燃燒三要素缺一不可，想想看溫度。" },
+        { id: 56, category: "act2", question: "為什麼油鍋起火時不能直接澆水滅火？", hint: "💡 提示：水遇到高溫油會變成水蒸氣，造成體積劇烈膨脹。" },
+        { id: 57, category: "act2", question: "油鍋起火滅火三步驟中，關閉爐火是為了移除燃燒三要素中的哪一個條件？", hint: "💡 提示：瓦斯或火源本身是什麼？" },
+        { id: 58, category: "act2", question: "火場逃生避難時，一定要謹記什麼原則，可侷限火勢及濃煙？", hint: "💡 提示：離開房間時要做的一個動作。" },
+        { id: 59, category: "act2", question: "為了避免電線短路引發火災，電線周邊不放置易燃物，這是移除燃燒三要素中的哪一項？", hint: "💡 提示：易燃物 = 可燃物。" },
+        { id: 60, category: "act2", question: "如果家裡的電線綑紮得太緊密，容易引發火災，這是因為對電線散熱有什麼影響？", hint: "💡 提示：熱量累積會導致溫度升高。" },
+        { id: 61, category: "act2", question: "蠟燭燃燒時，受熱熔化的蠟油會沿著燭芯上升，變成什麼型態，這才是實際燃燒的物質？", hint: "💡 提示：固體 -> 液體 -> ？" },
+        { id: 62, category: "act2", question: "「人離火熄」原則是預防火災的重要習慣，這是避免了燃燒三要素中的哪個條件持續存在？", hint: "💡 提示：持續加熱會讓溫度達到什麼？" },
+        { id: 71, category: "act2", question: "「空氣對物質燃燒的影響」實驗中，控制變因包括蠟燭的粗細、長短與點燃的時間，請問還包括哪個重要條件？", hint: "💡 提示：蓋住蠟燭的那個容器。" },
+        { id: 72, category: "act2", question: "原始人利用「弓弦鑽木法」生火時，周圍放置乾草的作用是什麼？", hint: "💡 提示：容易點燃的物質。" },
+        { id: 73, category: "act2", question: "油鍋起火後蓋上鍋蓋，關閉瓦斯，必須等待降溫後才能開蓋，否則可能會造成什麼現象？", hint: "💡 提示：火又燒起來了。" },
+        { id: 74, category: "act2", question: "為什麼使用打火機的火焰點燃木炭不是一件容易的事？", hint: "💡 提示：木炭的燃點比較高還是低？" },
+        { id: 75, category: "act2", question: "為什麼實驗中要設置實驗組與對照組？", hint: "💡 提示：為了確認結果是因為我們改變的那個條件（操縱變因）造成的。" },
+        { id: 92, category: "act3", question: "影響鐵生鏽的實驗中，鋼絲絨球「滴水」和「無滴水」的差異，主要在驗證哪個因素的影響？", hint: "💡 提示：看變因名稱。" },
+        { id: 93, category: "act3", question: "電鍍後的鐵製品，使用長久後仍可能會生鏽，這是因為電鍍層很薄，磨損後鐵會接觸到哪兩種物質？", hint: "💡 提示：生鏽兩大殺手。" },
+        { id: 94, category: "act3", question: "如果將鋼絲絨球浸水後用膠帶緊緊包住，使其與外界空氣隔絕，生鏽的情形會如何？", hint: "💡 提示：沒有氧氣會怎樣？" },
+        { id: 95, category: "act3", question: "鐵生鏽會使鐵製品外觀變得不美觀，請問還會造成哪一種影響？", hint: "💡 提示：東西壞掉或危險。" },
+        { id: 99, category: "act3", question: "檢驗鐵生鏽是否消耗氧氣的實驗中，如果蠟燭很快熄滅，可以推測瓶內殘留的氣體已經不具備哪種性質？", hint: "💡 提示：氧氣能幫助燃燒，那叫做什麼性？" },
+        { id: 100, category: "act3", question: "影響鐵生鏽的實驗中，為了避免溶液快速蒸發，我們需要蓋緊塑膠杯的杯口，請問這屬於實驗設計中的哪一種變因？", hint: "💡 提示：這是為了讓實驗條件保持一致。" }
     ];
 
     // ----------------------------------------
     // 程式邏輯
     // ----------------------------------------
-    const userAnswers = {}; // 儲存使用者答案 { qId: optionIndex }
-    const literacyAnswers = {}; // 儲存素養題文字
-    let isSubmitted = false; // 是否已送出
-    let currentCategory = 'all'; // 當前選中的分類
-    let currentQuestions = []; // 當前顯示的題目列表
+    const userAnswers = {};
+    const literacyAnswers = {};
+    let isSubmitted = false;
+    let currentCategory = 'all';
+    let currentQuestions = [];
+    let currentLiteracyQuestions = [];
 
-    // 分類名稱對照
     const categoryNames = {
-        'all': '全單元複習',
+        'all': '全單元 (100題)',
         'act1': '活動一：燃燒與氣體',
-        'act2': '活動二：鐵生鏽探討',
-        'act3': '活動三：防鏽與應用'
+        'act2': '活動二：燃燒與滅火',
+        'act3': '活動三：生鏽與防鏽'
     };
 
     function switchCategory(category) {
         if(isSubmitted) {
             if(!confirm("切換題庫會清除目前的作答狀態（若已送出則會重置），確定要切換嗎？")) return;
-            // 重置狀態
             isSubmitted = false;
             document.getElementById('submitBtn').disabled = false;
             document.getElementById('submitBtn').innerText = "🚀 送出測驗";
             document.getElementById('studentName').disabled = false;
-            // 清空答案
             for(let key in userAnswers) delete userAnswers[key];
         }
 
         currentCategory = category;
         
-        // 更新按鈕樣式
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.classList.remove('active');
             if (btn.textContent.includes(categoryNames[category]) || (category === 'all' && btn.textContent.includes('全單元'))) {
@@ -686,28 +827,31 @@
 
     function initQuiz() {
         const quizArea = document.getElementById('quiz-area');
+        const literacyArea = document.getElementById('literacy-area');
         
-        // 過濾題目
+        // 過濾選擇題
         if (currentCategory === 'all') {
             currentQuestions = questions;
+            currentLiteracyQuestions = literacyQuestions;
         } else {
             currentQuestions = questions.filter(q => q.category === currentCategory);
+            currentLiteracyQuestions = literacyQuestions.filter(q => q.category === currentCategory);
         }
 
         // 渲染選擇題
-        let html = `<div class="section-title">✨ 選擇題挑戰 (${categoryNames[currentCategory]}) ✨</div>`;
+        let html = `<div class="section-title">✨ 選擇題挑戰 (${currentQuestions.length}題) ✨</div>`;
         
         if (currentQuestions.length === 0) {
-            html += '<p style="text-align:center;">此分類暫無題目。</p>';
+            html += '<p style="text-align:center;">此分類暫無選擇題。</p>';
         } else {
             currentQuestions.forEach((q) => {
-                const levelClass = q.type === 'easy' ? '簡單' : (q.type === 'medium' ? '適中' : '困難');
+                const levelClass = q.type === 'easy' ? '基礎' : (q.type === 'medium' ? '進階' : '挑戰');
                 const levelColor = q.type === 'easy' ? '#81C784' : (q.type === 'medium' ? '#FFD54F' : '#E57373');
                 
                 html += `
                     <div class="question-card" id="card-${q.id}">
                         <div class="q-header">
-                            <div>
+                            <div class="q-badges">
                                 <span class="q-badge" style="background:${levelColor}; color:white;">${levelClass}</span>
                                 <span class="q-category-tag">${categoryNames[q.category]}</span>
                             </div>
@@ -722,43 +866,49 @@
                             `).join('')}
                         </div>
                         <div class="explanation-box" id="explain-${q.id}">
-                            <strong>💡 正確答案與說明：</strong>
+                            <strong>💡 正確答案：</strong>
                             ${q.options[q.answerIndex]}
                         </div>
                     </div>
                 `;
             });
         }
-
-        // 渲染素養題 (素養題目前不分類，固定顯示在下方，或可設為僅在 'all' 顯示，這裡設定為總是顯示)
-        html += '<div class="section-title">🧪 生活素養題 (文字問答) 🧪</div>';
-        literacyQuestions.forEach((q) => {
-            html += `
-                <div class="question-card">
-                    <div class="q-header">
-                        <span class="q-badge" style="background:#4DB6AC; color:white;">素養題</span>
-                        <span class="q-id">Q${q.id}</span>
-                    </div>
-                    <div class="q-text">${q.question}</div>
-                    <div class="q-hint">${q.hint}</div>
-                    <textarea class="literacy-input" 
-                        placeholder="請在此輸入你的答案..." 
-                        oninput="saveLiteracyAnswer('q${q.id}', this.value)"></textarea>
-                </div>
-            `;
-        });
-
         quizArea.innerHTML = html;
+
+        // 渲染素養題
+        let litHtml = `<div class="section-title">🧪 素養簡答題 (${currentLiteracyQuestions.length}題) 🧪</div>`;
+        if (currentLiteracyQuestions.length === 0) {
+            litHtml += '<p style="text-align:center;">此分類暫無簡答題。</p>';
+        } else {
+            currentLiteracyQuestions.forEach((q) => {
+                litHtml += `
+                    <div class="question-card">
+                        <div class="q-header">
+                            <div class="q-badges">
+                                <span class="q-badge" style="background:#4DB6AC; color:white;">素養題</span>
+                                <span class="q-category-tag">${categoryNames[q.category]}</span>
+                            </div>
+                            <span class="q-id">Q${q.id}</span>
+                        </div>
+                        <div class="q-text">${q.question}</div>
+                        <div class="q-hint">${q.hint}</div>
+                        <textarea class="literacy-input" 
+                            placeholder="請在此輸入你的答案..." 
+                            oninput="saveLiteracyAnswer('q${q.id}', this.value)"></textarea>
+                    </div>
+                `;
+            });
+        }
+        literacyArea.innerHTML = litHtml;
+
         loadHistory();
     }
 
     function selectOption(qId, optionIndex) {
-        if(isSubmitted) return; // 送出後不能修改
-
+        if(isSubmitted) return;
         playClickSound();
         userAnswers[qId] = optionIndex;
         
-        // UI 更新
         const parent = document.getElementById(`options-${qId}`);
         const allBtns = parent.querySelectorAll('.option-btn');
         allBtns.forEach(b => b.classList.remove('selected'));
@@ -785,42 +935,31 @@
         isSubmitted = true;
         document.getElementById('submitBtn').disabled = true;
         document.getElementById('submitBtn').innerText = "✅ 測驗已送出";
-
-        // 鎖定輸入框
         document.getElementById('studentName').disabled = true;
-        const textareas = document.querySelectorAll('.literacy-input');
-        textareas.forEach(t => t.disabled = true);
+        document.querySelectorAll('.literacy-input').forEach(t => t.disabled = true);
 
         let score = 0;
         let wrongList = [];
+        let totalPossible = currentQuestions.length * 2; // 每題2分
         
-        // 批改邏輯 (只批改當前顯示的題目)
         currentQuestions.forEach(q => {
             const card = document.getElementById(`card-${q.id}`);
             const userIdx = userAnswers[q.id];
             const correctIdx = q.answerIndex;
 
             if (userIdx === correctIdx) {
-                // 答對 (總分依照題目數量動態調整嗎？這裡先維持每題2分，滿分隨題目數變動)
                 score += 2;
                 card.classList.add('correct-card');
                 if(userIdx !== undefined) {
                     document.getElementById(`btn-${q.id}-${userIdx}`).classList.add('user-correct');
                 }
             } else {
-                // 答錯
                 wrongList.push(q.id);
                 card.classList.add('wrong-card');
-                
-                // 標示錯的選項 (如果使用者有選)
                 if (userIdx !== undefined) {
                     document.getElementById(`btn-${q.id}-${userIdx}`).classList.add('user-wrong');
                 }
-
-                // 標示正確答案
                 document.getElementById(`btn-${q.id}-${correctIdx}`).classList.add('correct-answer-mark');
-
-                // 顯示解析
                 document.getElementById(`explain-${q.id}`).style.display = 'block';
             }
         });
@@ -836,21 +975,19 @@
             name: name,
             category: categoryNames[currentCategory],
             score: score,
-            totalPossible: currentQuestions.length * 2, // 計算當前題組的滿分
+            totalPossible: totalPossible,
             wrong: wrongList,
             time: timeString,
             literacy: literacyAnswers
         };
 
-        // 儲存到 LocalStorage
         saveToLocalStorage(resultData);
-        
-        // 顯示結果
         showResultModal(resultData);
         playSuccessSound();
-        loadHistory(); // 更新列表
+        loadHistory();
     }
 
+    // Storage & History
     function saveToLocalStorage(data) {
         let history = JSON.parse(localStorage.getItem('quiz_history') || '[]');
         history.push(data);
@@ -861,79 +998,69 @@
         const history = JSON.parse(localStorage.getItem('quiz_history') || '[]');
         const tbody = document.querySelector('#historyTable tbody');
         tbody.innerHTML = '';
-        
-        // 反序顯示，最新的在上面
         history.slice().reverse().forEach(record => {
             const tr = document.createElement('tr');
-            // 處理舊資料沒有 totalPossible 的情況
             const fullScore = record.totalPossible || 100; 
             const isPass = (record.score / fullScore) >= 0.8;
-            
             tr.innerHTML = `
                 <td>${record.name}</td>
                 <td><span style="font-size:0.8rem; background:#eee; padding:2px 6px; border-radius:10px;">${record.category || '全單元'}</span></td>
                 <td style="color:${isPass ? 'green' : 'red'}; font-weight:bold;">${record.score} / ${fullScore}</td>
-                <td style="font-size:0.9rem; color:#666;">${record.time}</td>
+                <td style="font-size:0.8rem; color:#666;">${record.time}</td>
             `;
             tbody.appendChild(tr);
         });
     }
 
+    // Modal Control
     function showResultModal(data) {
         document.getElementById('displayName').innerText = data.name;
         document.getElementById('displayCategory').innerText = data.category;
         document.getElementById('displayScore').innerText = `${data.score} / ${data.totalPossible}`;
         document.getElementById('displayTime').innerText = data.time;
-        
         const wrongText = data.wrong.length > 0 ? data.wrong.join(', ') : "太厲害了，全對！🎉";
         document.getElementById('displayWrong').innerText = wrongText;
-
-        // 生成 Mailto 連結
         generateMailLink(data);
+        document.getElementById('resultModal').style.display = 'flex';
+    }
 
-        const modal = document.getElementById('resultModal');
-        modal.style.display = 'flex';
+    function closeResultModal() {
+        document.getElementById('resultModal').style.display = 'none';
+    }
+
+    function openStudyModal() {
+        document.getElementById('studyModal').style.display = 'flex';
+    }
+
+    function closeStudyModal() {
+        document.getElementById('studyModal').style.display = 'none';
     }
 
     function generateMailLink(data) {
         const recipient = "btosichen@gmail.com";
-        const subject = encodeURIComponent(`【燃燒與生鏽線上測驗成績】${data.name} - ${data.category}`);
-        
+        const subject = encodeURIComponent(`【燃燒與生鏽測驗】${data.name} - ${data.category}`);
         let literacyContent = "";
-        literacyQuestions.forEach((q) => {
+        currentLiteracyQuestions.forEach((q) => {
             const ans = data.literacy[`q${q.id}`] || "(未作答)";
-            literacyContent += `Q${q.id}：${ans}\n`;
+            literacyContent += `Q${q.id} [${q.question}]：\n${ans}\n\n`;
         });
-
         const body = `
 學生姓名：${data.name}
 測驗範圍：${data.category}
 成績：${data.score} / ${data.totalPossible} 分
 錯誤題號：${data.wrong.join(', ') || '無'}
 完成時間：${data.time}
-
 ------------------------
 【生活素養題答案】
 ${literacyContent}
         `.trim();
-
         const mailtoHref = `mailto:${recipient}?subject=${subject}&body=${encodeURIComponent(body)}`;
         document.getElementById('mailLink').href = mailtoHref;
     }
 
-    function closeModal() {
-        document.getElementById('resultModal').style.display = 'none';
-        // 視窗捲動回頂部，讓學生看錯題
-        // window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 啟動
     window.onload = function() {
-        // 初始化時，檢查是否要恢復某個狀態，或直接載入預設
         switchCategory('all');
     };
-
 </script>
-
 </body>
 </html>
