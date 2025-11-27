@@ -32,7 +32,7 @@
             padding-bottom: 80px;
         }
 
-        /* 固定頭部與姓名區 */
+        /* 固定頭部 */
         header {
             background-color: var(--primary-color);
             padding: 15px 15px;
@@ -45,16 +45,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px; /* 增加元件間距 */
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: center; /* 標題置中 */
-            width: 100%;
-            max-width: 800px;
-            align-items: center;
-            margin-bottom: 5px;
+            gap: 10px;
         }
 
         .app-title {
@@ -63,32 +54,6 @@
             font-weight: bold;
             text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
             text-align: center;
-        }
-
-        /* 調整後的重點筆記按鈕樣式 */
-        .btn-study {
-            background: var(--accent-color);
-            color: #5d4037;
-            border: 2px solid #fff; /* 增加白邊更顯眼 */
-            padding: 10px 0;
-            border-radius: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 0 #FBC02D, 0 5px 10px rgba(0,0,0,0.1);
-            transition: transform 0.1s;
-            font-size: 1.1rem; /* 字體加大 */
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            width: 100%;
-            max-width: 600px; /* 跟輸入框一樣寬 */
-        }
-
-        .btn-study:active {
-            transform: translateY(4px);
-            box-shadow: none;
         }
 
         .student-info {
@@ -126,6 +91,31 @@
             border-color: var(--secondary-color);
         }
 
+        .btn-study {
+            background: var(--accent-color);
+            color: #5d4037;
+            border: 2px solid #fff;
+            padding: 10px 0;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #FBC02D, 0 5px 10px rgba(0,0,0,0.1);
+            transition: transform 0.1s;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .btn-study:active {
+            transform: translateY(4px);
+            box-shadow: none;
+        }
+
         /* 題目區域 */
         .container {
             max-width: 800px;
@@ -133,7 +123,6 @@
             padding: 0 15px;
         }
 
-        /* 分類過濾按鈕區 */
         .category-filter {
             display: flex;
             flex-wrap: wrap;
@@ -179,11 +168,7 @@
             margin-bottom: 25px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
             border: 3px solid transparent;
-            transition: transform 0.2s, border-color 0.3s, background-color 0.3s;
-        }
-
-        .question-card:hover {
-            transform: translateY(-2px);
+            transition: transform 0.2s;
         }
 
         .question-card.correct-card {
@@ -269,10 +254,6 @@
             position: relative;
             color: #555;
             font-family: var(--font-main);
-        }
-
-        .option-btn:active {
-            transform: scale(0.98);
         }
 
         .option-btn.selected {
@@ -406,8 +387,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
+            background: rgba(0,0,0,0.85); 
+            z-index: 2000; 
             display: none;
             justify-content: center;
             align-items: center;
@@ -425,7 +406,7 @@
             position: relative;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -467,22 +448,30 @@
         .btn-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 15px;
         }
 
         .action-btn {
-            padding: 12px;
-            border-radius: 12px;
+            padding: 15px;
+            border-radius: 15px;
             border: none;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: bold;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .btn-mail { background: #4ECDC4; color: white; }
+        .btn-mail { 
+            background: #FF6B6B; /* 改為更顯眼的紅色 */
+            color: white; 
+            border: 3px solid white; 
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.5);
+            font-size: 1.3rem;
+        }
+        
         .btn-review { background: #FFB74D; color: white; }
         .btn-close { background: #95a5a6; color: white; }
 
@@ -530,7 +519,6 @@
         <label for="studentName">📛 姓名：</label>
         <input type="text" id="studentName" placeholder="輸入名字" required>
     </div>
-    <!-- 重點筆記按鈕移至此處 -->
     <button class="btn-study" onclick="openStudyModal()">
         <span>📖</span>
         <span>重點筆記複習</span>
@@ -636,8 +624,9 @@
             <p><strong>❌ 錯誤題號：</strong><br><span id="displayWrong" class="wrong-list">無</span></p>
         </div>
         <div class="btn-group">
-            <button class="action-btn btn-review" onclick="closeResultModal()">🔍 檢討錯題</button>
-            <a href="#" id="mailLink" class="action-btn btn-mail">📧 寄送成績給老師</a>
+            <!-- 這裡是關鍵修正：超大按鈕且 target="_blank" -->
+            <a href="#" id="mailLink" class="action-btn btn-mail" target="_blank">📧 點此寄送成績給老師</a>
+            <button class="action-btn btn-review" onclick="closeResultModal()">🔍 檢討錯題（看答案）</button>
             <button class="action-btn btn-close" onclick="closeResultModal()">關閉視窗</button>
         </div>
     </div>
@@ -645,43 +634,62 @@
 
 <script>
     // ----------------------------------------
-    // 音效模組
+    // 音效模組 (懶加載 - 解決自動播放問題)
     // ----------------------------------------
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    function playClickSound() {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
-        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.1);
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            try {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            } catch (e) { console.warn("Audio not supported"); }
+        }
+        if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
     }
-    function playSuccessSound() {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const notes = [523.25, 659.25, 783.99, 1046.50];
-        let time = audioCtx.currentTime;
-        notes.forEach((note, i) => {
+    
+    function playClickSound() {
+        initAudio();
+        if (!audioCtx) return;
+        try {
             const osc = audioCtx.createOscillator();
             const gain = audioCtx.createGain();
             osc.connect(gain);
             gain.connect(audioCtx.destination);
-            osc.type = 'triangle';
-            osc.frequency.value = note;
-            gain.gain.setValueAtTime(0.2, time + i * 0.1);
-            gain.gain.exponentialRampToValueAtTime(0.01, time + i * 0.1 + 0.3);
-            osc.start(time + i * 0.1);
-            osc.stop(time + i * 0.1 + 0.3);
-        });
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 0.1);
+        } catch(e) {}
+    }
+
+    function playSuccessSound() {
+        initAudio();
+        if (!audioCtx) return;
+        try {
+            const notes = [523.25, 659.25, 783.99, 1046.50];
+            let time = audioCtx.currentTime;
+            notes.forEach((note, i) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.type = 'triangle';
+                osc.frequency.value = note;
+                gain.gain.setValueAtTime(0.2, time + i * 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.01, time + i * 0.1 + 0.3);
+                osc.start(time + i * 0.1);
+                osc.stop(time + i * 0.1 + 0.3);
+            });
+        } catch(e) {}
     }
 
     // ----------------------------------------
-    // 100題題庫資料 (含改編)
+    // 100題題庫資料
     // ----------------------------------------
     const questions = [
         // === 活動一 (1-30) ===
@@ -770,7 +778,7 @@
     ];
 
     // ----------------------------------------
-    // 素養簡答題資料 (含改編)
+    // 素養簡答題資料
     // ----------------------------------------
     const literacyQuestions = [
         { id: 24, category: "act1", question: "在「製造氧氣」的實驗中，金針菇的作用最接近於哪一項物質？", hint: "💡 提示：它不是反應物，但是可以加快反應速度。" },
@@ -798,7 +806,7 @@
     ];
 
     // ----------------------------------------
-    // 程式邏輯
+    // 程式邏輯 (安全強化版)
     // ----------------------------------------
     const userAnswers = {};
     const literacyAnswers = {};
@@ -840,7 +848,6 @@
         const quizArea = document.getElementById('quiz-area');
         const literacyArea = document.getElementById('literacy-area');
         
-        // 過濾選擇題
         if (currentCategory === 'all') {
             currentQuestions = questions;
             currentLiteracyQuestions = literacyQuestions;
@@ -849,7 +856,6 @@
             currentLiteracyQuestions = literacyQuestions.filter(q => q.category === currentCategory);
         }
 
-        // 渲染選擇題
         let html = `<div class="section-title">✨ 選擇題挑戰 (${currentQuestions.length}題) ✨</div>`;
         
         if (currentQuestions.length === 0) {
@@ -886,7 +892,6 @@
         }
         quizArea.innerHTML = html;
 
-        // 渲染素養題
         let litHtml = `<div class="section-title">🧪 素養簡答題 (${currentLiteracyQuestions.length}題) 🧪</div>`;
         if (currentLiteracyQuestions.length === 0) {
             litHtml += '<p style="text-align:center;">此分類暫無簡答題。</p>';
@@ -921,11 +926,13 @@
         userAnswers[qId] = optionIndex;
         
         const parent = document.getElementById(`options-${qId}`);
-        const allBtns = parent.querySelectorAll('.option-btn');
-        allBtns.forEach(b => b.classList.remove('selected'));
+        if(parent) {
+            const allBtns = parent.querySelectorAll('.option-btn');
+            allBtns.forEach(b => b.classList.remove('selected'));
+        }
         
         const selectedBtn = document.getElementById(`btn-${qId}-${optionIndex}`);
-        selectedBtn.classList.add('selected');
+        if(selectedBtn) selectedBtn.classList.add('selected');
     }
 
     function saveLiteracyAnswer(key, value) {
@@ -934,6 +941,7 @@
     }
 
     function submitQuiz() {
+        // 1. 基本檢查
         const name = document.getElementById('studentName').value.trim();
         if (!name) {
             alert("⚠️ 請先輸入你的姓名才能送出喔！");
@@ -943,6 +951,7 @@
 
         if(!confirm("確定要送出測驗嗎？送出後就會直接顯示分數與正確答案喔！")) return;
 
+        // 2. 鎖定介面
         isSubmitted = true;
         document.getElementById('submitBtn').disabled = true;
         document.getElementById('submitBtn').innerText = "✅ 測驗已送出";
@@ -951,29 +960,39 @@
 
         let score = 0;
         let wrongList = [];
-        let totalPossible = currentQuestions.length * 2; // 每題2分
+        let totalPossible = currentQuestions.length * 2; 
         
-        currentQuestions.forEach(q => {
-            const card = document.getElementById(`card-${q.id}`);
-            const userIdx = userAnswers[q.id];
-            const correctIdx = q.answerIndex;
+        // 3. 安全批改 (即使 DOM 操作失敗，計算也不會中斷)
+        try {
+            currentQuestions.forEach(q => {
+                const userIdx = userAnswers[q.id];
+                const correctIdx = q.answerIndex;
+                const card = document.getElementById(`card-${q.id}`);
+                const explainBox = document.getElementById(`explain-${q.id}`);
 
-            if (userIdx === correctIdx) {
-                score += 2;
-                card.classList.add('correct-card');
-                if(userIdx !== undefined) {
-                    document.getElementById(`btn-${q.id}-${userIdx}`).classList.add('user-correct');
+                if (userIdx === correctIdx) {
+                    score += 2;
+                    if(card) card.classList.add('correct-card');
+                    if(userIdx !== undefined) {
+                        const btn = document.getElementById(`btn-${q.id}-${userIdx}`);
+                        if(btn) btn.classList.add('user-correct');
+                    }
+                } else {
+                    wrongList.push(q.id);
+                    if(card) card.classList.add('wrong-card');
+                    if (userIdx !== undefined) {
+                        const btn = document.getElementById(`btn-${q.id}-${userIdx}`);
+                        if(btn) btn.classList.add('user-wrong');
+                    }
+                    const correctBtn = document.getElementById(`btn-${q.id}-${correctIdx}`);
+                    if(correctBtn) correctBtn.classList.add('correct-answer-mark');
+                    
+                    if(explainBox) explainBox.style.display = 'block';
                 }
-            } else {
-                wrongList.push(q.id);
-                card.classList.add('wrong-card');
-                if (userIdx !== undefined) {
-                    document.getElementById(`btn-${q.id}-${userIdx}`).classList.add('user-wrong');
-                }
-                document.getElementById(`btn-${q.id}-${correctIdx}`).classList.add('correct-answer-mark');
-                document.getElementById(`explain-${q.id}`).style.display = 'block';
-            }
-        });
+            });
+        } catch (e) {
+            console.error("DOM update error, continuing to result...", e);
+        }
 
         const now = new Date();
         const timeString = now.getFullYear() + "-" + 
@@ -992,13 +1011,18 @@
             literacy: literacyAnswers
         };
 
-        saveToLocalStorage(resultData);
+        // 4. 儲存與顯示結果
+        try { saveToLocalStorage(resultData); } catch(e) {}
+        
+        // 5. 強制顯示模態視窗 (放在 try-catch 外確保執行)
         showResultModal(resultData);
+        
+        // 6. 播放音效 & 捲動
         playSuccessSound();
         loadHistory();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Storage & History
     function saveToLocalStorage(data) {
         let history = JSON.parse(localStorage.getItem('quiz_history') || '[]');
         history.push(data);
@@ -1006,24 +1030,25 @@
     }
 
     function loadHistory() {
-        const history = JSON.parse(localStorage.getItem('quiz_history') || '[]');
-        const tbody = document.querySelector('#historyTable tbody');
-        tbody.innerHTML = '';
-        history.slice().reverse().forEach(record => {
-            const tr = document.createElement('tr');
-            const fullScore = record.totalPossible || 100; 
-            const isPass = (record.score / fullScore) >= 0.8;
-            tr.innerHTML = `
-                <td>${record.name}</td>
-                <td><span style="font-size:0.8rem; background:#eee; padding:2px 6px; border-radius:10px;">${record.category || '全單元'}</span></td>
-                <td style="color:${isPass ? 'green' : 'red'}; font-weight:bold;">${record.score} / ${fullScore}</td>
-                <td style="font-size:0.8rem; color:#666;">${record.time}</td>
-            `;
-            tbody.appendChild(tr);
-        });
+        try {
+            const history = JSON.parse(localStorage.getItem('quiz_history') || '[]');
+            const tbody = document.querySelector('#historyTable tbody');
+            tbody.innerHTML = '';
+            history.slice().reverse().forEach(record => {
+                const tr = document.createElement('tr');
+                const fullScore = record.totalPossible || 100; 
+                const isPass = (record.score / fullScore) >= 0.8;
+                tr.innerHTML = `
+                    <td>${record.name}</td>
+                    <td><span style="font-size:0.8rem; background:#eee; padding:2px 6px; border-radius:10px;">${record.category || '全單元'}</span></td>
+                    <td style="color:${isPass ? 'green' : 'red'}; font-weight:bold;">${record.score} / ${fullScore}</td>
+                    <td style="font-size:0.8rem; color:#666;">${record.time}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } catch(e) {}
     }
 
-    // Modal Control
     function showResultModal(data) {
         document.getElementById('displayName').innerText = data.name;
         document.getElementById('displayCategory').innerText = data.category;
@@ -1031,7 +1056,10 @@
         document.getElementById('displayTime').innerText = data.time;
         const wrongText = data.wrong.length > 0 ? data.wrong.join(', ') : "太厲害了，全對！🎉";
         document.getElementById('displayWrong').innerText = wrongText;
+        
+        // 生成並設定郵件連結
         generateMailLink(data);
+        
         document.getElementById('resultModal').style.display = 'flex';
     }
 
@@ -1051,10 +1079,14 @@
         const recipient = "btosichen@gmail.com";
         const subject = encodeURIComponent(`【燃燒與生鏽測驗】${data.name} - ${data.category}`);
         let literacyContent = "";
-        currentLiteracyQuestions.forEach((q) => {
-            const ans = data.literacy[`q${q.id}`] || "(未作答)";
-            literacyContent += `Q${q.id} [${q.question}]：\n${ans}\n\n`;
-        });
+        
+        if(currentLiteracyQuestions && currentLiteracyQuestions.length > 0) {
+            currentLiteracyQuestions.forEach((q) => {
+                const ans = data.literacy[`q${q.id}`] || "(未作答)";
+                literacyContent += `Q${q.id} [${q.question}]：\n${ans}\n\n`;
+            });
+        }
+        
         const body = `
 學生姓名：${data.name}
 測驗範圍：${data.category}
@@ -1066,7 +1098,12 @@
 ${literacyContent}
         `.trim();
         const mailtoHref = `mailto:${recipient}?subject=${subject}&body=${encodeURIComponent(body)}`;
-        document.getElementById('mailLink').href = mailtoHref;
+        
+        // 設定到按鈕上
+        const btn = document.getElementById('mailLink');
+        if(btn) {
+            btn.href = mailtoHref;
+        }
     }
 
     window.onload = function() {
